@@ -42,7 +42,6 @@ int find(string &s, string first, string second, int first_points, int second_po
         {
             st.pop();
             res += first_points;
-            continue;
         }
         else
         {
@@ -50,11 +49,13 @@ int find(string &s, string first, string second, int first_points, int second_po
         }
         i++;
     }
+
     // now all the first's are removed..
 
     // now in the rem stack we try to find the second string and since it will be in reverse thing we will again find
 
     // first string only..
+
     while (st.size() > 1)
     {
         char second_char = st.top();
@@ -63,6 +64,7 @@ int find(string &s, string first, string second, int first_points, int second_po
         st.pop();
         if (first_char == second[0] && second_char == second[1])
         {
+
             res += second_points;
             continue;
         }
@@ -84,9 +86,11 @@ signed main()
         string s;
 
         cin >> s >> F >> S;
-        int res = find(s, "ab", "ba", F, S);
-        res = max(res, find(s, "ba", "ab", S, F));
-        cout << res << endl;
+        int res1 = find(s, "ab", "ba", F, S);
+
+        int res2 = find(s, "ba", "ab", S, F);
+
+        cout << max(res1, res2) << endl;
     }
     return 0;
 }
