@@ -56,22 +56,26 @@ int find(string &s, string first, string second, int first_points, int second_po
 
     // first string only..
 
-    while (st.size() > 1)
+    string m;
+    while (!st.empty())
     {
-        char second_char = st.top();
+        m += st.top();
         st.pop();
-        char first_char = st.top();
-        st.pop();
-        if (first_char == second[0] && second_char == second[1])
+    }
+    reverse(m.begin(), m.end());
+    i = 0;
+    while (i < m.size())
+    {
+        if (!st.empty() && st.top() == second[0] && m[i] == second[1])
         {
-
+            st.pop();
             res += second_points;
-            continue;
         }
         else
         {
-            st.push(first_char);
+            st.push(m[i]);
         }
+        i++;
     }
     return res;
 }

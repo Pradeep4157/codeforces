@@ -68,5 +68,15 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+
+    "C_Cpp.errorSquiggles": "disabled",
+
+    // 👇 Add these to restore snippet expansion
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "comments": false,
+        "strings": false,
+        "other": true
+    },
+    "editor.wordBasedSuggestions": "matchingDocuments"
 }
