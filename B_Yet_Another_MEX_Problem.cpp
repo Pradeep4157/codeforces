@@ -13,56 +13,42 @@ using namespace std;
 
     so the error was that we can increase the mex value ..
 
+    is that the only mistake ..
+
+    there are 2 options :
+
+        for every k sized array if the mex == k + 1..
+
+        then we remove the biggest element
+
+        else :
+            we remove the extra number..
+
+    at the end there is going to be k - 1 elements..
+
+    if i focus on the part where the mex < k - 1..
+
+        then i can see whether any array can be converted from x ... x + y ..
+
+        so in this case there is going to be elements removed which will be mostly from the left / right
+
+        ends so that new elements come in and increase the mex..
+
+        mostly if i get mex answer  == k + 1 :
+
+            then  it is def that we keep removing the max element and at the end the elements
+
+            left = 0,1,2,3....k-2
+
+        else :
+
+            there is chance that we remove
+
+
+
 
 
 */
-
-vector<int> find(vector<int> &a, int k)
-{
-    int n = a.size();
-    vector<int> freq(k + 1, 0);
-    set<int> missing;
-    vector<int> ans;
-
-    for (int i = 0; i <= k; i++)
-        missing.insert(i);
-
-    for (int i = 0; i < k; i++)
-    {
-        if (a[i] <= k)
-        {
-            freq[a[i]]++;
-            if (freq[a[i]] == 1)
-                missing.erase(a[i]);
-        }
-    }
-
-    ans.push_back(*missing.begin());
-
-    for (int i = k; i < n; i++)
-    {
-
-        int out = a[i - k];
-        if (out <= k)
-        {
-            freq[out]--;
-            if (freq[out] == 0)
-                missing.insert(out);
-        }
-
-        int in = a[i];
-        if (in <= k)
-        {
-            freq[in]++;
-            if (freq[in] == 1)
-                missing.erase(in);
-        }
-
-        ans.push_back(*missing.begin());
-    }
-
-    return ans;
-}
 
 signed main()
 {
@@ -77,11 +63,24 @@ signed main()
         vector<int> arr(n);
         for (int i = 0; i < n; i++)
             cin >> arr[i];
-        vector<int> all_mexes = find(arr, k);
-        sort(all_mexes.begin(), all_mexes.end());
-        int maxi = all_mexes[all_mexes.size() - 1];
-        maxi = min(maxi, k - 1);
-        cout << maxi << endl;
+        set<int> st;
+        for (int i = 0; i < n; i++)
+        {
+            if (st.count(arr[i]))
+                continue;
+            else
+            {
+                st.insert(arr[i]);
+            }
+        }
+        int res = 0;
+        for (int i = 0; i < k - 1; i++)
+        {
+            if (!st.count(i))
+                break;
+            res++;
+        }
+        cout << res << endl;
     }
     return 0;
 }

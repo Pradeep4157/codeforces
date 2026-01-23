@@ -1,0 +1,1 @@
+{"name":"Local: AZ_Round Trip","url":"c:\\Users\\krp18\\OneDrive\\Documents\\codeforces\\AZ_Round Trip.cpp","tests":[{"id":1769115804533,"input":"5 6\n1 3\n1 2\n5 3\n1 5\n2 4\n4 5","output":"YES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\krp18\\OneDrive\\Documents\\codeforces\\AZ_Round Trip.cpp","group":"local","local":true}
